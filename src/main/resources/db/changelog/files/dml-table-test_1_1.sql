@@ -1,0 +1,14 @@
+--liquibase formatted sql
+--changeset Vijay:V1.1
+INSERT INTO TEST_1 VALUES (1, 'My Name 1');
+INSERT INTO TEST_1 VALUES (2, 'My Name 2');
+INSERT INTO TEST_1 VALUES (3, 'My Name 3');
+INSERT INTO TEST_1 VALUES (4, 'My Name 4');
+INSERT INTO TEST_1 VALUES (5, 'My Name 5');
+INSERT INTO TEST_1 VALUES (6, 'My Name 6');
+INSERT INTO TEST_1 VALUES (7, 'My Name 7');
+INSERT INTO TEST_1 VALUES (8, 'My Name 8');
+INSERT INTO TEST_1 VALUES (9, 'My Name 9');
+
+--rollback DELETE FROM TEST_1 WHERE ID IN (1,2,3,4,5,6,7,8,9)
+
