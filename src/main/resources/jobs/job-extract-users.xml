@@ -53,7 +53,7 @@
 	<job id="testJob" xmlns="http://www.springframework.org/schema/batch">
 		<step id="step1">
 			<tasklet>
-				<chunk reader="itemReader" writer="flatFileItemWriter"
+				<chunk reader="itemReader" writer="avroFileItemWriter"
 					commit-interval="1" />
 			</tasklet>
 		</step>
@@ -92,6 +92,20 @@
 			</bean>
 		</property>
 	</bean>
+
+	<!-- AVRO file writer -->
+	<bean id="avroFileItemWriter" class="org.springframework.batch.item.avro.AvroItemWriter">
+		<constructor-arg ref="avrowritableResource" />
+		<constructor-arg ref="avroSchemaResource" />
+		<constructor-arg value="com.mine.firstproject.springbootfirstproject.User" />
+	</bean>
 	
+	<bean id="avrowritableResource" class="org.springframework.core.io.FileSystemResource">
+		<constructor-arg value="output/users.all.avro" />
+	</bean>
+
+	<bean id="avroSchemaResource" class="org.springframework.core.io.FileSystemResource">
+		<constructor-arg value="src/main/resources/avro/users.avsc" />
+	</bean>
 	
 </beans>

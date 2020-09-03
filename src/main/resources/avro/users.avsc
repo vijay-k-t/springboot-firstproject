@@ -1,0 +1,8 @@
+{"namespace": "com.mine.firstproject.springbootfirstproject",
+ "type": "record",
+ "name": "User",
+ "fields": [
+     {"name": "id", "type": "int"},
+     {"name": "username",  "type": ["string", "null"]}
+ ]
+}
