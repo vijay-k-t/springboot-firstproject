@@ -25,6 +25,7 @@
 		</property>
 	</bean>
 
+    <!-- Paging Reader -->
 	<bean id="pagingItemReader"
 		class="org.springframework.batch.item.database.JdbcPagingItemReader"
 		scope="step">
@@ -59,6 +60,7 @@
 		</step>
 	</job>
 
+	<!-- xml file writer -->
 	<!--
 	<bean id="itemWriter" class="org.springframework.batch.item.xml.StaxEventItemWriter">
 		<property name="resource" value="file:xml/outputs/users.xml" />

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.mine.firstproject.springbootfirstproject.jobs.JobService;
+
 import org.apache.avro.Schema;
 import org.apache.avro.file.DataFileReader;
 import org.apache.avro.file.DataFileWriter;
@@ -34,6 +36,9 @@ public class DemoApplication {
 
 	@Autowired
 	JobSchedulerService jobschedulerService;
+
+	@Autowired
+	JobService jobService;
 	
 	@GetMapping("/hello")
 	public String sayHello() {
@@ -65,7 +70,8 @@ public class DemoApplication {
 	public boolean initiateJob() {
 		System.out.println("---------------Initiating job -----------------");
 		long l1 = System.currentTimeMillis();
-		jobschedulerService.run();
+		//jobschedulerService.run();
+		jobService.run("execute");
 		long l2 = System.currentTimeMillis();
 		System.out.println("Time Taken (in milli seconds) : " + (l2-l1));
 		System.out.println("---------------Completing job -----------------");
