@@ -11,4 +11,6 @@
     <include file="files/dml-table-test_1_2.sql"  relativeToChangelogFile="true" />
     <include file="files/dml-table-test_1_3.sql"  relativeToChangelogFile="true" />
     <include file="files/quartz_h2_tables.sql"  relativeToChangelogFile="true" />
+    <include file="files/ddl-table-test_2.sql"  relativeToChangelogFile="true" />
+    <include file="files/dml-table-test_2_1.sql"  relativeToChangelogFile="true" />
 </databaseChangeLog>

@@ -11,8 +11,8 @@
 		http://www.springframework.org/schema/util/spring-util-3.2.xsd
 		">
         
-	<import resource="../config/context.xml" />
-	<import resource="../config/database.xml" />
+	<import resource="../config/context.xml" / >
+	<import resource="../config/database.xml" / >
 
 	<bean id="itemReader"
 		class="org.springframework.batch.item.database.JdbcCursorItemReader"

@@ -78,26 +78,33 @@ public class DemoApplication {
 		return true;
 	}
 
-	@GetMapping("/readData")
-	public List<User> readData() {
+	@GetMapping("/readData/{file}")
+	public List<Object> readData(@PathVariable("file") String file) {
 		//Deserialize sample avro file
-		List<User> result = new ArrayList<>();
+		List<Object> result = new ArrayList<>();
 		try {
-			File avroOutput = new File("output/users.all.avro");
-			Schema schema = new Schema.Parser().parse(new File("src/main/resources/avro/users.avsc"));
-			DatumReader<User> bdPersonDatumReader = new ReflectDatumReader<User>(schema);
-			DataFileReader<User> dataFileReader = new DataFileReader<User>(avroOutput, bdPersonDatumReader);
-			User p = null;
+			String schemaNm = "";
+			String output = "";
+
+			if(file.equals("users")) {
+				schemaNm = "src/main/resources/avro/users.avsc";
+				output = "output/users.all.avro";
+			}else {
+				schemaNm = "src/main/resources/avro/users2.avsc";
+				output = "output/users2.all.avro";	
+			}
+
+			File avroOutput = new File(output);
+			Schema schema = new Schema.Parser().parse(new File(schemaNm));
+			DatumReader<Object> bdPersonDatumReader = new ReflectDatumReader<Object>(schema);
+			DataFileReader<Object> dataFileReader = new DataFileReader<Object>(avroOutput, bdPersonDatumReader);
+			Object p = null;
 			while(dataFileReader.hasNext()){
-				System.out.println(dataFileReader.getMetaKeys());
-				System.out.println(dataFileReader.getSchema());
-				
 				p = dataFileReader.next();
-				System.out.println(p);
+				//System.out.println(p);
 				result.add(p);
 			}
 			dataFileReader.close();
-
 		} catch(IOException e) {System.out.println("Error reading Avro");}
 		return result;
 	}
