@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
 @RestController
@@ -75,6 +76,14 @@ public class DemoApplication {
 		long l2 = System.currentTimeMillis();
 		System.out.println("Time Taken (in milli seconds) : " + (l2-l1));
 		System.out.println("---------------Completing job -----------------");
+		return true;
+	}
+
+	@GetMapping("/initiateasyncjob")
+	public boolean initiateasyncjob() {
+		WebClient client = WebClient.create("http://localhost:8080");
+		client.get().uri("/initiatejob")
+		.exchange().subscribe();
 		return true;
 	}
 

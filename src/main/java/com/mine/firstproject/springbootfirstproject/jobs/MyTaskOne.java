@@ -12,6 +12,8 @@ public class MyTaskOne implements Tasklet {
         System.out.println("MyTaskOne start..");
  
         // ... your code
+
+        Thread.sleep(10000);
          
         System.out.println("MyTaskOne done..");
         return RepeatStatus.FINISHED;
