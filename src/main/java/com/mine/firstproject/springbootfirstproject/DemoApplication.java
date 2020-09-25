@@ -18,6 +18,9 @@ import org.apache.avro.reflect.ReflectDatumWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.dataflow.server.EnableDataFlowServer;
+import org.springframework.cloud.deployer.spi.cloudfoundry.CloudFoundryDeployerAutoConfiguration;
+import org.springframework.cloud.task.configuration.EnableTask;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.ColumnMapRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -28,8 +31,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 
-@SpringBootApplication
+@SpringBootApplication (exclude = {CloudFoundryDeployerAutoConfiguration.class})
 @RestController
+@EnableTask
+@EnableDataFlowServer
 public class DemoApplication {
 
 	@Autowired
@@ -81,7 +86,7 @@ public class DemoApplication {
 
 	@GetMapping("/initiateasyncjob")
 	public boolean initiateasyncjob() {
-		WebClient client = WebClient.create("http://localhost:8080");
+		WebClient client = WebClient.create("http://localhost:9393");
 		client.get().uri("/initiatejob")
 		.exchange().subscribe();
 		return true;

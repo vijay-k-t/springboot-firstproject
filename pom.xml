@@ -19,6 +19,18 @@
 		<spring.batch.version>4.2.4.RELEASE</spring.batch.version>
 	</properties>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Hoxton.SR6</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -47,6 +59,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
+			<version>1.4.193</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -92,6 +105,32 @@
 			<artifactId>spring-boot-starter-webflux</artifactId>
 			<version>2.2.6.RELEASE</version>
 		</dependency>
+
+		<!-- spring cloud data flow -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-task</artifactId>
+			<version>2.2.3.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-dataflow-server</artifactId>
+			<version>2.4.0.RELEASE</version>
+			<!-- exclusions>
+				<exclusion>
+					<groupId>io.pivotal.spring.cloud</groupId>
+					<artifactId>spring-cloud-services-config-client-autoconfigure</artifactId>
+				</exclusion>
+			</exclusions -->
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.pivotal.spring.cloud/spring-cloud-services-config-client-autoconfigure -->
+		<dependency>
+			<groupId>io.pivotal.spring.cloud</groupId>
+			<artifactId>spring-cloud-services-config-client-autoconfigure</artifactId>
+			<version>3.1.5.RELEASE</version>
+		</dependency>
+
 
 	</dependencies>
 
