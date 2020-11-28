@@ -21,6 +21,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.dataflow.server.EnableDataFlowServer;
 import org.springframework.cloud.deployer.spi.cloudfoundry.CloudFoundryDeployerAutoConfiguration;
 import org.springframework.cloud.task.configuration.EnableTask;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.ColumnMapRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -35,6 +36,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @RestController
 @EnableTask
 @EnableDataFlowServer
+@EnableJpaRepositories("com.mine.firstproject.springbootfirstproject.*")
 public class DemoApplication {
 
 	@Autowired
@@ -142,6 +144,20 @@ public class DemoApplication {
 		} catch(IOException e) {System.out.println("Error reading Avro");}
 		return result;
 	}
+
+	/*
+	@GetMapping("/importUserJob")
+	public boolean importUserJob() {
+		System.out.println("---------------Initiating job -----------------");
+		long l1 = System.currentTimeMillis();
+		//jobschedulerService.run();
+		jobService.importUserJob("execute");
+		long l2 = System.currentTimeMillis();
+		System.out.println("Time Taken (in milli seconds) : " + (l2-l1));
+		System.out.println("---------------Completing job -----------------");
+		return true;
+	}
+	*/
 
 
 	public static void main(String[] args) {

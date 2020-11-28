@@ -13,4 +13,12 @@
     <include file="files/quartz_h2_tables.sql"  relativeToChangelogFile="true" />
     <include file="files/ddl-table-test_2.sql"  relativeToChangelogFile="true" />
     <include file="files/dml-table-test_2_1.sql"  relativeToChangelogFile="true" />
+    <include file="files/ddl-table-test_3.sql"  relativeToChangelogFile="true" />
+    <include file="files/ddl-table-test_4.sql"  relativeToChangelogFile="true" />
+    <include file="files/test-view.sql"  relativeToChangelogFile="true"/>
+
+    <changeSet id="tag-1.0" author="Vijay">
+        <tagDatabase tag="tag-1.0" />
+    </changeSet>
+
 </databaseChangeLog>

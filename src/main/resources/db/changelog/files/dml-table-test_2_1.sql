@@ -12,3 +12,7 @@ INSERT INTO TEST_2 VALUES (9, 'My Name 9', 'Desc 9');
 
 --rollback DELETE FROM TEST_2 WHERE ID IN (1,2,3,4,5,6,7,8,9)
 
+--changeset Vijay:TEST_2_V2
+INSERT INTO TEST_2 VALUES (21, 'My Name 21', 'Desc 21');
+INSERT INTO TEST_2 VALUES (22, 'My Name 22', 'Desc 22');
+

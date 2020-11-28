@@ -18,6 +18,23 @@ public class JobService {
     @Qualifier("demoJob")
     Job job;
 
+    /*
+    @Autowired
+    @Qualifier("importUserJob")
+    Job importUserJob;
+
+    public void importUserJob(String... args)  {
+        try {
+        JobParameters params = new JobParametersBuilder()
+                    .addString("JobID", String.valueOf(System.currentTimeMillis()))
+                    .toJobParameters();
+        jobLauncher.run(importUserJob, params);
+        }catch (Exception e) {
+            System.out.println("error: " + e.getMessage());
+        }
+    }
+    */
+
     public void run(String... args)  {
         try {
         JobParameters params = new JobParametersBuilder()
